@@ -1,0 +1,40 @@
+# Temporary and cache files
+tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and editor files
+.env
+.venv/
+env/
+venv/
+.idea/
+.vscode/
+
+# Large datasets, submodules, model outputs, and pretrained weights
+submodules/
+task1/data/
+task1/output/
+task2/checkpoints/
+task2/outputs/
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+*.onnx
+*.bin
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.ply
+*.glb
+*.obj
+*.mp4
+
+# Generated legacy scratch files
+pdf_content.txt
+report.md

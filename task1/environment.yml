@@ -1,0 +1,37 @@
+name: hw3-task1-3dgs-aigc
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.1.2
+  - torchvision=0.16.2
+  - torchaudio=2.1.2
+  - pytorch-cuda=11.8
+  - cudatoolkit
+  - ninja
+  - cmake
+  - ffmpeg
+  - pip
+  - pip:
+      - accelerate
+      - diffusers
+      - gradio
+      - imageio==2.33.1
+      - imageio-ffmpeg==0.4.9
+      - matplotlib==3.8.2
+      - omegaconf
+      - open3d==0.18.0
+      - opencv-python==4.9.0.80
+      - pillow>=9.3.0
+      - plyfile==1.0.3
+      - pytorch-lightning
+      - rembg
+      - reportlab>=4.0.0
+      - swanlab==0.1.5
+      - tqdm==4.66.1
+      - transformers
+      - trimesh==4.0.5
+      - wandb==0.16.1

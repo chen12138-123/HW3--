@@ -1,0 +1,47 @@
+# Reproduction environment for this homework
+name: lerobot
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - ffmpeg
+  - numpy
+  - pandas
+  - matplotlib
+  - pillow
+  - av
+  - tqdm
+  - termcolor
+  - hydra-core
+  - omegaconf
+  - pybullet
+  - pytorch-lightning
+  - pip:
+      - accelerate==1.14.0
+      - datasets==4.8.5
+      - deepdiff==8.6.2
+      - diffusers==0.35.2
+      - draccus==0.10.0
+      - einops==0.8.2
+      - gymnasium==1.3.0
+      - huggingface-hub==1.20.1
+      - imageio==2.37.3
+      - imageio-ffmpeg==0.6.0
+      - jsonlines==4.0.0
+      - lerobot==0.5.1
+      - moviepy==2.2.1
+      - numpy-quaternion==2024.0.13
+      - opencv-python-headless==4.13.0.92
+      - plotly==6.8.0
+      - pyarrow==24.0.0
+      - pydantic==2.13.4
+      - pyyaml==6.0.3
+      - pyyaml-include==1.4.1
+      - rerun-sdk==0.26.2
+      - rich==15.0.0
+      - safetensors==0.8.0
+      - scipy==1.18.0
+      - wandb==0.24.2
