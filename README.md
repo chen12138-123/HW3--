@@ -33,8 +33,16 @@ Group members:
 │       ├── main.tex
 │       └── figures/
 ├── SUBMISSION.md
+├── report/
+│   └── HW3_深度学习与空间智能_综合提交.pdf
 ├── environment.yml
 └── HW3_深度学习与空间智能.pdf
+```
+
+The combined submission PDF is:
+
+```text
+report/HW3_深度学习与空间智能_综合提交.pdf
 ```
 
 ## Task 1

@@ -12,6 +12,12 @@ Group members:
 
 ## Reports
 
+Combined submission report:
+
+```text
+report/HW3_深度学习与空间智能_综合提交.pdf
+```
+
 Task 1 report:
 
 ```text

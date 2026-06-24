@@ -316,12 +316,12 @@ def front_matter() -> list[Any]:
     elems.append(HRFlowable(width="100%", thickness=1.0, color=colors.black, spaceBefore=2, spaceAfter=22))
     elems.append(plain(GROUP_MEMBERS, "author"))
     elems.append(p(f"课程：深度学习与空间智能&nbsp;&nbsp;&nbsp;&nbsp;提交仓库：{en(PROJECT_GITHUB)}", "author"))
-    elems.append(p("正文中文采用宋体小四，英文与公式采用 Times New Roman 风格；图表数据均以可视化图片呈现。", "author"))
+    elems.append(p("深度学习与空间智能 HW3 综合实验报告", "author"))
     elems.append(Spacer(1, 12))
     elems.append(plain("摘 要", "abstract_title"))
     elems.append(
         p(
-            f"本报告完成题目一的全链路三维空间智能实验：以开源 {en('Mip-NeRF 360 garden')} 场景作为统一背景，使用 {en('GraphDECO 3D Gaussian Splatting')} 完成真实场景重建；物体 A 使用真实多视角 {en('Tanks and Temples truck')} 数据复现 {en('COLMAP + 3DGS')} 路线；物体 B 依据题目要求使用 {en('threestudio DreamFusion/SDS')} 从文本提示生成三维资产，并补充本机可完整交付的先进前馈三维生成结果；物体 C 使用单张去背景前景图、{en('Zero123')} 视角先验和 {en('TripoSR')} 生成可融合三维资产。最终阶段不再采用截图贴片，而是在三维数据层读取背景、A、B、C 四路 PLY 或 3DGS-compatible PLY，执行尺度、旋转、平移、颜色过滤与顶点字段级拼接，输出融合后的 {en('model.ply')} 和多视角漫游视频。实验显示，真实多视角 3DGS 在几何一致性和可评价性上最稳定，背景测试集 PSNR 为 {en('30.4103 dB')}，物体 A 测试集 PSNR 为 {en('26.1683 dB')}；文本到 3D 和单图到 3D 具有更低输入成本，但更依赖扩散先验、提示词和视角补全能力。"
+            f"题目一围绕真实重建、生成式三维资产和统一场景融合展开。实验选取开源 {en('Mip-NeRF 360 garden')} 作为背景场景，使用 {en('GraphDECO 3D Gaussian Splatting')} 训练并渲染；物体 A 采用真实多视角 {en('Tanks and Temples truck')} 数据复现 {en('COLMAP + 3DGS')} 路线；物体 B 使用 {en('threestudio DreamFusion/SDS')} 从文本提示生成三维资产，并用本机可稳定运行的前馈三维生成流程补充可融合结果；物体 C 以单张去背景前景图为输入，结合 {en('Zero123')} 视角先验和 {en('TripoSR')} 得到 mesh 与 3DGS-compatible PLY。融合阶段直接读取背景、A、B、C 四路 PLY 数据，在三维坐标中完成尺度、旋转、平移、颜色过滤与顶点字段拼接，输出融合后的 {en('model.ply')} 和多视角漫游视频。实验结果显示，真实多视角 3DGS 在几何一致性和可评价性上最稳定，背景测试集 PSNR 为 {en('30.4103 dB')}，物体 A 测试集 PSNR 为 {en('26.1683 dB')}；文本到 3D 和单图到 3D 的输入成本更低，但更依赖扩散先验、提示词和视角补全能力。"
         )
     )
     return elems
@@ -340,7 +340,7 @@ def story() -> list[Any]:
     elems.append(h1("1", "任务定义与总体路线"))
     elems.append(
         p(
-            "题目一要求在同一三维场景中组织真实重建资产与 AIGC 资产，因此本实验把工作拆成四条可验证链路：真实背景重建、真实多视角物体重建、文本到 3D 生成、单图到 3D 生成。旧版结果的主要问题是融合阶段过于接近二维截图叠加，缺少三维数据层证据。本版报告把融合定义为统一 PLY/vertex 表示后的三维坐标变换与字段拼接，并用融合后 PLY 的预览图、俯视图、点数统计和视频关键帧共同证明结果来源。"
+            "题目一需要把真实重建资产和 AIGC 资产放入同一个三维场景。实验分成四条链路：真实背景重建、真实多视角物体重建、文本到 3D 生成、单图到 3D 生成。融合部分采用统一 PLY/vertex 表示后的三维坐标变换与字段拼接，并通过融合后 PLY 的预览图、俯视图、点数统计和视频关键帧说明结果来源。"
         )
     )
     elems.extend(fig("08_pipeline_diagram.png", "图 1：题目一完整技术路线。所有分支均保留输入、训练或生成结果、可视化图与最终可融合资产。", max_height=11.5 * cm))
@@ -467,7 +467,7 @@ def story() -> list[Any]:
     elems.append(h1("7", "实验数据可视化与对比分析"))
     elems.append(
         p(
-            "按照提交要求，本报告尽量避免把实验数据放成大表格，而是把关键指标、耗时、资产规模、先进算法尝试状态和质量比较都做成图片。需要特别说明的是，3DGS 的 L1/PSNR 来自有真实 GT 的渲染评价；B/C 没有多视角真实 GT，不能伪造 PSNR 或 SSIM，因此采用训练步数、资产几何规模、可视化质量、耗时和融合后点数进行比较。"
+            "实验数据主要以图像形式展示，包括关键指标、耗时、资产规模、先进算法尝试状态和质量比较。3DGS 的 L1/PSNR 来自有真实 GT 的渲染评价；B/C 没有多视角真实 GT，因此不额外构造 PSNR 或 SSIM，而采用训练步数、资产几何规模、可视化质量、耗时和融合后点数进行比较。"
         )
     )
     elems.extend(fig("03_asset_stats.png", "图 17：B/C 最终资产的 mesh 顶点数、面片数、采样 splats 与生成耗时。", max_height=10.5 * cm))
@@ -483,7 +483,7 @@ def story() -> list[Any]:
     elems.append(h1("8", "三维数据级融合与漫游视频"))
     elems.append(
         p(
-            f"最终融合读取四个输入：背景 garden 的官方 3DGS PLY、物体 A truck 的官方 3DGS PLY、物体 B 的 3DGS-compatible PLY、物体 C 的 3DGS-compatible PLY。融合元数据记录的方法为“{esc(fusion_meta.get('method', 'Raw 3DGS-compatible PLY merge after 3D coordinate transforms'))}”。融合后的总 splats/points 为 {en(comps.get('fused', {}).get('points', 0))}，其中背景采样 {en(comps.get('background', {}).get('points', 0))}，物体 A 采样 {en(comps.get('object_a', {}).get('points', 0))}，物体 B 过滤后 {en(comps.get('object_b', {}).get('points', 0))}，物体 C 过滤后 {en(comps.get('object_c', {}).get('points', 0))}。"
+            f"融合阶段使用四个输入：背景 garden 的官方 3DGS PLY、物体 A truck 的官方 3DGS PLY、物体 B 的 3DGS-compatible PLY、物体 C 的 3DGS-compatible PLY。融合元数据中记录的方法为“{esc(fusion_meta.get('method', 'Raw 3DGS-compatible PLY merge after 3D coordinate transforms'))}”。融合后的总 splats/points 为 {en(comps.get('fused', {}).get('points', 0))}，其中背景采样 {en(comps.get('background', {}).get('points', 0))}，物体 A 采样 {en(comps.get('object_a', {}).get('points', 0))}，物体 B 过滤后 {en(comps.get('object_b', {}).get('points', 0))}，物体 C 过滤后 {en(comps.get('object_c', {}).get('points', 0))}。"
         )
     )
     elems.extend(fig("06_fusion_layout.png", "图 21：A/B/C 在背景坐标系中的插入位置俯视示意。", max_height=10.0 * cm))
@@ -493,7 +493,7 @@ def story() -> list[Any]:
     elems.extend(fig("14_video_keyframes.png", "图 25：最终漫游视频 output/final_fused/roaming_video.mp4 的关键帧。", max_height=9.4 * cm))
     elems.append(
         p(
-            "当前融合已经解决了二维截图贴片的问题，但仍存在光照一致性和接触阴影不足。原因是 B/C 由 mesh 表面采样并写入 SH0 颜色，缺少官方 3DGS 训练得到的高阶球谐和各向异性高斯参数。后续若继续提升质量，可把融合后的整体场景作为初始化做短程 3DGS finetune，或对 B/C 单独重训练高斯参数。"
+            "融合结果在三维数据层完成拼接，但光照一致性和接触阴影仍不充分。主要原因是 B/C 由 mesh 表面采样并写入 SH0 颜色，缺少官方 3DGS 训练得到的高阶球谐和各向异性高斯参数。若继续提升质量，可以把融合后的整体场景作为初始化做短程 3DGS finetune，或对 B/C 单独重训练高斯参数。"
         )
     )
 
@@ -501,7 +501,7 @@ def story() -> list[Any]:
     elems.append(h1("9", "输出文件与提交说明"))
     elems.append(
         p(
-            f"任务一报告、代码、README 和可视化图已整理到统一仓库 {en(PROJECT_GITHUB)}。大体积权重、原始数据和 PLY/GLB 结果不建议直接提交到 GitHub，应单独上传到云盘或课程平台，并在提交说明中写明下载链接。task1 当前本地应上传的核心结果包括：背景与物体 A 的 3DGS PLY、B/C 的 GLB 与 PLY、融合后的 PLY、漫游视频，以及必要时的 TripoSR 预训练权重。"
+            f"代码、README 和可视化结果统一放在仓库 {en(PROJECT_GITHUB)}。大体积权重、原始数据和 PLY/GLB 结果单独上传到云盘或课程平台。task1 需要保留的核心结果包括：背景与物体 A 的 3DGS PLY、B/C 的 GLB 与 PLY、融合后的 PLY、漫游视频，以及必要时的 TripoSR 预训练权重。"
         )
     )
     elems.extend(fig("12_artifacts_manifest.png", "图 26：task1 模型权重与结果文件清单，供云盘或课程平台上传使用。", max_height=10.8 * cm))
@@ -527,7 +527,7 @@ def story() -> list[Any]:
     elems.append(h1("10", "结论"))
     elems.append(
         p(
-            "本次修订完成了题目一报告的完整闭环：重新对齐任务要求，补充了 3DGS、SDS、Zero123、SH0 转换、三维变换融合和评价指标公式；把实验数据、对比数据和输出清单尽量转为图片呈现；把作者信息、提交仓库和权重说明补全；最终融合明确采用三维数据级 PLY 拼接，不再把场景 A 截图作为融合结果。实验结论是：真实多视角 3DGS 仍是几何和视角一致性最强的路线，文本到 3D 适合低成本语义创作但短训练不稳定，单图到 3D 在输入成本和物体可识别性之间更均衡。"
+            "总体来看，真实多视角 3DGS 仍是几何和视角一致性最强的路线，适合有多视角图像和相机位姿的场景；文本到 3D 的优势是输入成本低、语义可控，但短训练下容易受到提示词和扩散先验影响；单图到 3D 在输入成本和物体可识别性之间更均衡。融合阶段采用三维数据级 PLY 拼接，能够保留各资产的空间位置和点数结构，但在统一光照、接触阴影和高阶外观建模上仍有改进空间。"
         )
     )
     return elems
