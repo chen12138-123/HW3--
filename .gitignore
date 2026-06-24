@@ -34,6 +34,7 @@ task2/outputs/
 *.glb
 *.obj
 *.mp4
+*.pdf
 
 # Generated legacy scratch files
 pdf_content.txt
