@@ -1,6 +1,14 @@
 # Task 2: ACT Cross-Environment Generalization with LeRobot
 
-This folder contains the Task 2 submission materials for the ACT policy generalization experiment on CALVIN-style LeRobot datasets.
+This folder contains the Task 2 materials for the ACT policy generalization experiment on CALVIN-style LeRobot datasets.
+
+PDF reports are generated or stored locally and ignored by Git. The local report path is:
+
+```text
+task2/report/main.pdf
+```
+
+The GitHub repository keeps the LaTeX source, figures, scripts, and environment file.
 
 The experiment compares:
 
@@ -42,11 +50,11 @@ Expected local layout:
 
 ```text
 /path/to/calvin-lerobot/
-├── splitA
-├── splitB
-├── splitC
-├── splitD
-└── splitABC
+|-- splitA
+|-- splitB
+|-- splitC
+|-- splitD
+`-- splitABC
 ```
 
 `splitABC` is the local union of `splitA`, `splitB`, and `splitC`. The scripts expect each split to contain:
@@ -161,10 +169,4 @@ python scripts/eval_metrics.py \
 
 ## Report
 
-The submitted Chinese report is:
-
-```text
-report/main.pdf
-```
-
-The LaTeX source is kept under `report/` for transparency. The original machine used XeLaTeX with the local NeurIPS-style template.
+The LaTeX source is kept under `report/` for transparency. The original machine used XeLaTeX with the local NeurIPS-style template. The generated PDF is ignored by Git and should be uploaded separately.

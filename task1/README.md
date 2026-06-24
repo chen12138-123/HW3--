@@ -1,17 +1,11 @@
 # Task 1: 3DGS and AIGC Multi-Source Asset Fusion
 
-This folder contains the Task 1 pipeline for multi-source 3D asset generation and fusion in a real reconstructed scene.
+This folder contains the Task 1 pipeline for multi-source 3D asset generation and fusion in a reconstructed real scene.
 
-The Chinese report is available at:
-
-```text
-report/main.pdf
-```
-
-A compatibility copy is also kept at:
+PDF reports are generated locally and ignored by Git. The local report path is:
 
 ```text
-report/HW3_Report.pdf
+task1/report/main.pdf
 ```
 
 ## Pipeline
@@ -35,7 +29,12 @@ conda env create -f environment.yml
 conda activate hw3-task1-3dgs-aigc
 ```
 
-The full pipeline requires an NVIDIA GPU, CUDA 11.8-compatible PyTorch, COLMAP, and compiled 3DGS CUDA extensions. Some AIGC branches also require pretrained model weights that are not stored in Git.
+The full pipeline requires:
+
+- NVIDIA GPU and CUDA 11.8-compatible PyTorch.
+- COLMAP.
+- Compiled GraphDECO/Inria 3DGS CUDA extensions.
+- AIGC model weights for the selected generation branches.
 
 ## External Assets
 
@@ -84,17 +83,16 @@ Fuse all assets in 3D:
 python src/final_fusion.py
 ```
 
-Rebuild the Chinese report:
+Rebuild the local Chinese report:
 
 ```bash
 python src/report_builder.py
 ```
 
-The report builder regenerates visualization figures and writes:
+The report builder regenerates visualization figures and writes ignored local PDF files under:
 
 ```text
-report/main.pdf
-report/HW3_Report.pdf
+report/
 ```
 
 ## Main Outputs
@@ -110,8 +108,9 @@ output/final_assets/object_c_final/mesh.glb
 output/final_assets/object_c_final/model.ply
 output/final_fused/model.ply
 output/final_fused/roaming_video.mp4
+data/models/TripoSR/model.ckpt
 ```
 
 ## Notes
 
-The report includes attempted advanced 3D generation routes such as Hunyuan3D-2.1, TRELLIS/TRELLIS.2, and Stable Fast 3D. Routes that were blocked by model access, network, Windows compatibility, or GPU memory are recorded as attempts, not treated as successful final results.
+The report records attempted advanced 3D generation routes such as Hunyuan3D-2.1, TRELLIS/TRELLIS.2, and Stable Fast 3D. Routes blocked by model access, network, Windows compatibility, or GPU memory are recorded as attempts rather than final successful results.
